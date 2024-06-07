@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encurtador de URL</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <header>
+        <div class="site-name">
+            <h1>Encurtador de URL</h1>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <form method="POST">
+                <label for="long_url">URL Longa:</label>
+                <input type="text" id="long_url" name="long_url" required>
+                <button type="submit">Encurtar</button>
+            </form>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <div class="result">
+                <ul>
+                    {% for message in messages %}
+                    <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+            {% endwith %}
+        </div>
+    </main>
+</body>
+
+</html>
